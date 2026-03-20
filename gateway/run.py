@@ -4413,6 +4413,9 @@ class GatewayRunner:
             repeat_count[0] = 0
             
             progress_queue.put(msg)
+
+            if stream_consumer_holder[0] is not None:
+                stream_consumer_holder[0].on_delta("\n\n")
         
         # Background task to send progress messages
         # Accumulates tool lines into a single message that gets edited
